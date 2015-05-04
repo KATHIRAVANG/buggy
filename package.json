@@ -1,0 +1,18 @@
+{
+  "name": "buggy",
+  "version": "0.0.1",
+  "description": "Issue tracking system for projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "issue",
+    "bugs",
+    "buggy",
+    "project",
+    "tracking"
+  ],
+  "author": "Daan van Ham <daan@vanham.io>",
+  "license": "ISC"
+}
