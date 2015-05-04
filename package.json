@@ -14,5 +14,12 @@
     "tracking"
   ],
   "author": "Daan van Ham <daan@vanham.io>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "code": "^1.4.0",
+    "lab": "^5.8.0"
+  },
+  "dependencies": {
+    "glue": "^2.0.0"
+  }
 }
