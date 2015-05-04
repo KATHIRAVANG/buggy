@@ -14,7 +14,12 @@
     "tracking"
   ],
   "author": "Daan van Ham <daan@vanham.io>",
-  "license": "ISC",
+  "repository": "git://github.com/daanvanham/buggy",
+  "bugs": {
+    "url": "https://github.com/daanvanham/buggy/issues",
+    "email": "daan@vanham.io"
+  },
+  "license": "MIT",
   "devDependencies": {
     "code": "^1.4.0",
     "lab": "^5.8.0"
