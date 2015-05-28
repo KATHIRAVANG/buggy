@@ -1,6 +1,6 @@
 {
   "name": "buggy",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Issue tracking system for projects",
   "main": "index.js",
   "scripts": {
