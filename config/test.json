@@ -1,0 +1,20 @@
+{
+	"name": "Buggy",
+	"manifest": {
+		"server": {
+			"app": {
+				"slogan": "Issue Tracking"
+			}
+		},
+		"connections": [{
+			"port": 8000
+		}],
+		"plugins": {}
+	},
+	"database": {
+		"dsn": "mongodb://root@localhost/buggy"
+	},
+	"api": {
+		"version": "v1"
+	}
+}

@@ -30,7 +30,7 @@ lab.experiment('API', function() {
 
 	lab.experiment('POST ' + base, function() {
 		lab.test('should return a model', function(done) {
-			server.inject({method: 'POST', url: base, payload: data}, function(response) {
+			server.inject({method: 'POST', url: base, payload: {title: data.title, description: data.description}}, function(response) {
 				var result = response.result.result;
 
 				Code.expect(response.statusCode).to.equal(201);
