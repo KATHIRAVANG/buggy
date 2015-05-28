@@ -4,7 +4,9 @@
   "description": "Issue tracking system for projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "./node_modules/.bin/nsp audit-package",
+    "test": "./node_modules/.bin/lab -f -t 100 -m 3000 test",
+    "test-coverage": "./node_modules/.bin/lab -f -r html -m 3000 -o report.html test"
   },
   "keywords": [
     "issue",
@@ -22,9 +24,15 @@
   "license": "MIT",
   "devDependencies": {
     "code": "^1.4.0",
-    "lab": "^5.8.0"
+    "lab": "^5.8.0",
+    "nsp": "^1.0.1",
+    "plato": "^1.5.0"
   },
   "dependencies": {
-    "glue": "^2.0.0"
+    "glue": "^2.0.0",
+    "hapi-status": "^1.0.0",
+    "joi": "^6.4.1",
+    "lodash": "^3.9.1",
+    "mongoose": "^4.0.2"
   }
 }
