@@ -1,21 +1,24 @@
 'use strict';
 
 var Glue = require('glue'),
-	manifest = {
-		"server": {
-			"app": {
-				"slogan": "Issue Tracking"
-			}
-		},
-		"connections": [{
-			"port": 8000,
-		}],
-		"plugins": {}
-	},
+	fs = require('fs'),
+	Config = require('./lib/config'),
+	manifest = Config.get('manifest'),
+	dir = __dirname + '/api',
 	server;
 
+fs.readdirSync(dir)
+	.filter(function(item) {
+		return fs.statSync(dir + '/' + item).isDirectory();
+	})
+	.forEach(function(item) {
+		manifest.plugins[dir + '/' + item] = null;
+	});
+
 Glue.compose(manifest, function(error, svr) {
-	if (error) throw new Error(error);
+	if (error) {
+		throw new Error(error);
+	}
 
 	server = svr;
 
