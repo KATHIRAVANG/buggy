@@ -22,6 +22,17 @@ Glue.compose(manifest, function(error, svr) {
 
 	server = svr;
 
+	server.views({
+		engines: {
+			html: require('handlebars')
+		},
+		path: './client/build/html',
+		layoutPath: './client/build/html/layout',
+		layout: 'default',
+		partialsPath: './client/build/html/partials'
+
+	});
+
 	if (!module.parent) {
 		server.start(function(error) {
 			console.log(' - server started at port ' + server.info.port);
