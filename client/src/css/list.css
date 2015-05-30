@@ -1,0 +1,29 @@
+#list {
+
+}
+
+#list article {
+	padding: 0 10px;
+
+	line-height: 30px;
+
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+#list article:nth-last-child(2n) {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#list article:hover {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+#list article > .-title {
+	font-weight: bold;
+}
+
+#list .fa-sliders {
+	float: right;
+
+	line-height: 30px;
+}

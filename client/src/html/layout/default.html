@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Buggy</title>
+
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link href="/static/colors.css" rel="stylesheet" />
+		<link href="/static/layout.css" rel="stylesheet" />
+		<link href="/static/header.css" rel="stylesheet" />
+		<link href="/static/list.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id="capture">
+			{{> header}}
+
+			{{! inserting all views here }}
+			{{{content}}}
+		</div>
+
+		<script src="//cdn.jsdelivr.net/blocks/0.3.1/blocks.min.js"></script>
+		<script src="/static/konflux.js"></script>
+		<script src="/static/api.js"></script>
+		<script src="/static/base.js"></script>
+	</body>
+</html>
