@@ -4,26 +4,45 @@
 (function(window, kx) {
 	'use strict';
 
-	api.fetch('issue', function(response, status, message) {
-		var App = blocks.Application(),
-			Issue = App.Model({
-				id: App.Property(),
-				title: App.Property(),
-				description: App.Property()
-			}),
-			List = App.Collection(Issue),
-			list = [];
+	var App = blocks.Application(),
+		Issue = App.Model({
+			id: App.Property(),
+			title: App.Property(),
+			description: App.Property()
+		}),
+		List = App.Collection(Issue, {
+			options: {
+				create: {
+					url: ''
+				}
+			}
+		}),
+		list = [];
 
+	App.View('List', {
+		list: List(list),
+
+		create: function() {
+			this.list.push({
+				title: 'test',
+				description: 'yolo'
+			});
+
+			console.log('create');
+
+			this.list.sync();
+		}
+	});
+
+	api.fetch('issue', function(response, status, message) {
 		response.result.forEach(function(item) {
-			list.push({
+			App.View('List').list.push({
 				id: item.id,
 				title: item.title,
 				description: item.description
 			});
 		});
-
-		App.View('List', {
-			list: List(list)
-		});
 	});
+
+	window.App = App;
 })(window, kx);
