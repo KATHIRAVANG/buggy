@@ -41,11 +41,15 @@
     "wanted": "^1.2.2"
   },
   "dependencies": {
-    "glue": "^2.0.0",
+    "glue": "^2.3.0",
     "handlebars": "^3.0.3",
+    "hapi": "^10.0.0",
     "hapi-status": "^1.0.0",
+    "hoek": "^2.16.2",
+    "inert": "^3.0.1",
     "joi": "^6.4.1",
     "lodash": "^3.9.1",
-    "mongoose": "^4.0.2"
+    "mongoose": "^4.0.2",
+    "vision": "^3.0.0"
   }
 }

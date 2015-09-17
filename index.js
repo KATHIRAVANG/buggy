@@ -1,36 +1,31 @@
 'use strict';
 
 var Glue = require('glue'),
-	fs = require('fs'),
+	Hoek = require('hoek'),
 	Config = require('./lib/config'),
 	manifest = Config.get('manifest'),
-	dir = __dirname + '/api',
 	server;
 
-fs.readdirSync(dir)
-	.filter(function(item) {
-		return fs.statSync(dir + '/' + item).isDirectory();
-	})
-	.forEach(function(item) {
-		manifest.plugins[dir + '/' + item] = null;
-	});
-
-Glue.compose(manifest, function(error, svr) {
+Glue.compose(manifest, {relativeTo: __dirname}, function(error, svr) {
 	if (error) {
 		throw new Error(error);
 	}
 
 	server = svr;
 
-	server.views({
-		engines: {
-			html: require('handlebars')
-		},
-		path: './client/build/html',
-		layoutPath: './client/build/html/layout',
-		layout: 'default',
-		partialsPath: './client/build/html/partials'
+	server.register(require('inert'), function(err) {
+		Hoek.assert(!err, err);
+	});
 
+	server.register(require('vision'), function(err) {
+		Hoek.assert(!err, err);
+
+		server.views({
+			engines: {
+				html: require('handlebars')
+			},
+			path: __dirname + '/client/src/html'
+		});
 	});
 
 	if (!module.parent) {

@@ -6,10 +6,42 @@
 				"slogan": "Issue Tracking"
 			}
 		},
-		"connections": [{
-			"port": 8000
-		}],
-		"plugins": {}
+		"connections": [
+			{
+				"port": 8000,
+				"labels": ["api"]
+			},
+			{
+				"port": 8080,
+				"labels": ["web"]
+			}
+		],
+		"plugins": [
+			{
+				"./api/static": [
+					{
+						"select": ["web"],
+						"options": {}
+					}
+				]
+			},
+			{
+				"./api/issue": [
+					{
+						"select": ["api"],
+						"options": {}
+					}
+				]
+			},
+			{
+				"./api/web": [
+					{
+						"select": ["web"],
+						"options": {}
+					}
+				]
+			}
+		]
 	},
 	"database": {
 		"dsn": "mongodb://root@localhost/buggy"
