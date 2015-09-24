@@ -4,12 +4,21 @@
 	<head>
 		<title>Buggy</title>
 
-		<link href="/static/base.css" rel="stylesheet" />
+		<!-- <link href=//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css rel=stylesheet /> -->
+		<link href=/static/colors.css rel=stylesheet />
+		<link href=/static/layout.css rel=stylesheet />
+		<link href=/static/header.css rel=stylesheet />
 	</head>
 
 	<body>
-		<div id="capture"><h1>Hallo Emmy!</h1></div>
+		<main>
+			{{> header}}
+			<section>
+				<h1>Hallo Wereld!</h1>
+			</section>
+		</main>
 
-		<script src="/static/base.js"></script>
+		<script src=/static/konflux.js></script>
+		<script src=/static/base.js></script>
 	</body>
 </html>
