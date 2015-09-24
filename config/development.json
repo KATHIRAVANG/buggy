@@ -8,11 +8,11 @@
 		},
 		"connections": [
 			{
-				"port": 8000,
+				"port": 8010,
 				"labels": ["api"]
 			},
 			{
-				"port": 8080,
+				"port": 8090,
 				"labels": ["web"]
 			}
 		],
