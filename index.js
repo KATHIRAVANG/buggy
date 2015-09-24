@@ -24,7 +24,8 @@ Glue.compose(manifest, {relativeTo: __dirname}, function(error, svr) {
 			engines: {
 				html: require('handlebars')
 			},
-			path: __dirname + '/client/src/html'
+			path: __dirname + '/client/src/html',
+			partialsPath: __dirname + '/client/src/html/partials'
 		});
 	});
 
