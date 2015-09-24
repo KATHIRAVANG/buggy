@@ -10,6 +10,12 @@ exports.register = function(server, options, next) {
 			var file = request.params.path.split('.');
 
 			return reply.file(Path.join(__dirname, '../..', 'client/src/', file[1], request.params.path));
+		},
+		config: {
+			cache: {
+				expiresIn: 60 * 60 * 1000,
+				privacy: 'private'
+			}
 		}
 	});
 
