@@ -4,6 +4,7 @@ var Glue = require('glue'),
 	Hoek = require('hoek'),
 	Config = require('./lib/config'),
 	manifest = Config.get('manifest'),
+	helper = require('./helper/handlebars.js'),
 	server;
 
 Glue.compose(manifest, {relativeTo: __dirname}, function(error, svr) {
@@ -24,8 +25,8 @@ Glue.compose(manifest, {relativeTo: __dirname}, function(error, svr) {
 			engines: {
 				html: require('handlebars')
 			},
-			path: __dirname + '/client/src/html',
-			partialsPath: __dirname + '/client/src/html/partials'
+			path: __dirname + '/public/html',
+			partialsPath: __dirname + '/public/html/partials'
 		});
 	});
 
