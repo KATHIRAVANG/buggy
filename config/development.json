@@ -8,39 +8,16 @@
 		},
 		"connections": [
 			{
-				"port": 8080,
+				"port": 9000,
 				"labels": ["api"]
 			}
 		],
 		"plugins": [
-			{
-				"./api/static": [
-					{
-						"select": ["api"],
-						"options": {}
-					}
-				]
-			},
-			{
-				"./api/issue": [
-					{
-						"select": ["api"],
-						"options": {}
-					}
-				]
-			},
-			{
-				"./api/web": [
-					{
-						"select": ["api"],
-						"options": {}
-					}
-				]
-			}
+			{"inert": {}}
 		]
 	},
 	"database": {
-		"dsn": "mongodb://root@localhost/buggy"
+		"dsn": "mongodb://buggy:buggy@localhost/buggy"
 	},
 	"api": {
 		"version": "v1"

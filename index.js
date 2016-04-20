@@ -1,24 +1,39 @@
 'use strict';
 
-var Glue = require('glue'),
+const Glue = require('glue'),
 	Hoek = require('hoek'),
+	mongoose = require('mongoose'),
+	fs = require('fs'),
 	Config = require('./lib/config'),
 	manifest = Config.get('manifest'),
-	helper = require('./helper/handlebars.js'),
-	server;
+	helper = require('./helper/handlebars.js');
 
-Glue.compose(manifest, {relativeTo: __dirname}, function(error, svr) {
+let server;
+
+fs.readdirSync('./api')
+	.filter(item => {
+		return fs.statSync('./api/' + item).isDirectory();
+	})
+	.forEach(item => {
+		let plugin = {};
+
+		plugin['./api/' + item] = [{
+			select: ['api'],
+			options: {}
+		}];
+
+		manifest.plugins.push(plugin);
+	});
+
+Glue.compose(manifest, {relativeTo: __dirname}, (error, svr) => {
 	if (error) {
 		throw new Error(error);
 	}
 
 	server = svr;
+	mongoose.connect(Config.get('database/dsn'));
 
-	server.register(require('inert'), function(err) {
-		Hoek.assert(!err, err);
-	});
-
-	server.register(require('vision'), function(err) {
+	server.register(require('vision'), err => {
 		Hoek.assert(!err, err);
 
 		server.views({
@@ -31,7 +46,7 @@ Glue.compose(manifest, {relativeTo: __dirname}, function(error, svr) {
 	});
 
 	if (!module.parent) {
-		server.start(function(error) {
+		server.start(error => {
 			console.log(' - server started at port ' + server.info.port);
 		});
 	}

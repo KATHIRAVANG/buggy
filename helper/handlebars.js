@@ -10,7 +10,9 @@ const handlebars = require('handlebars'),
 			css: [],
 			js: [
 				'./public/js/vendor/konflux.js',
-				'./public/js/vendor/kontext.js'
+				'./public/js/vendor/kontext.js',
+				'./public/js/api.js',
+				'./public/js/list.js'
 			]
 		},
 		production: {
