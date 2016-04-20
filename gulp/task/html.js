@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function(stream, devour) {
+module.exports = (stream, devour) => {
 	return stream
-		.pipe(devour.write('./html'))
-		.pipe(devour.plugin('html-minifier'))
+		.pipe(devour.plugin('minify-html'))
+		.pipe(devour.pipe('selector', 'html'))
 		.pipe(devour.plugin('rename', devour.min))
 		.pipe(devour.write('./html'));
 };

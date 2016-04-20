@@ -1,3 +1,9 @@
 {
-	"output": "client/build"
+	"output": "public",
+
+	"priority": [
+		"konflux.js",
+		"kontext.js",
+		"base.js"
+	]
 }

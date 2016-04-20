@@ -1,14 +1,14 @@
 'use strict';
 
-var Wanted = require('wanted'),
+const Wanted = require('wanted'),
 	Devour = require('devour'),
 	gutil = require('gulp-util'),
 	hjson = require('hjson'),
 	fs = require('fs');
 
-(function(wanted) {
+(wanted => {
 	wanted
-		.on('install', function(module) {
+		.on('install', module => {
 			//  accept all module installs/updates
 			module.accept();
 
@@ -20,15 +20,15 @@ var Wanted = require('wanted'),
 			);
 		})
 
-		.on('ready', function() {
-			fs.readFile(__dirname + '/gulp/config/devour.json', function(error, data) {
+		.on('ready', () => {
+			fs.readFile(__dirname + '/gulp/config/devour.json', (error, data) => {
 				new Devour(hjson.parse(String(data)))
 					.task('clean')
-					.task('concat-js', './client/src/js/**/*.js', false)
-					.task('concat-css', './client/src/css/**/*.css', false)
-					.task('html', './client/src/html/**/*.html')
-					.task('script', './client/src/js/**/*.js')
-					.task('style', './client/src/css/**/*.css')
+					.task('html', ['./public/html/**/*.html', '!./public/html/**/*.min.html'])
+					.task('script', ['./public/js/**/*.js', '!./public/js/combined.min.js', '!./public/js/vendor/*.js'])
+					.task('style', ['./public/css/**/*.css', '!./public/css/combined.min.css', '!./public/css/404*'])
+					.task('icon', ['./public/img/sprite/*.svg', '!./public/css/sprite/sprite.svg'])
+					.task('vendor', ['./public/js/vendor/*.js', '!./public/js/vendor/*.min.js'])
 					.start();
 			});
 		})
