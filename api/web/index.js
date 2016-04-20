@@ -1,12 +1,26 @@
 'use strict';
 
-exports.register = function(server, options, next) {
+function handler(view) {
+	if (process.env.NODE_ENV === 'production') {
+		view += '.min.html';
+	}
+
+	return (request, reply) => {
+		reply.view(view).header('Content-Type', 'text/html; charset=utf-8');
+	};
+}
+
+exports.register = (server, options, next) => {
 	server.route({
 		method: 'GET',
 		path: '/',
-		handler: function(request, reply) {
-			return reply.view('base');
-		}
+		handler: handler('base')
+	});
+
+	server.route({
+		method: 'GET',
+		path: '/404',
+		handler: handler('404')
 	});
 
 	next();

@@ -1,19 +1,37 @@
 'use strict';
 
-var Path = require('path');
+const Path = require('path');
 
-exports.register = function(server, options, next) {
+exports.register = (server, options, next) => {
 	server.route({
 		method: 'GET',
-		path: '/static/{path*}',
-		handler: function(request, reply) {
-			var file = request.params.path.split('.');
+		path: '/static/{spoiler}/{path*}',
+		handler: (request, reply) => {
+			let file = request.params.path.split('.'),
+				path = [process.cwd(), 'public'],
+				type = file[file.length - 1];
 
-			return reply.file(Path.join(__dirname, '../..', 'client/src/', file[1], request.params.path));
+			if (['js', 'css'].indexOf(type) !== -1) {
+				path.push(file[file.length - 1]);
+			}
+
+			if (type === 'map') {
+				path.push(file[file.length - 2]);
+			}
+
+			if (request.params.spoiler === 'img') {
+				// if img and cache spoiler is missing just return the image
+				request.params.path = 'img/' + request.params.path;
+			}
+
+			path.push(request.params.path);
+
+			return reply.file(Path.join.apply(Path, path));
 		},
+
 		config: {
 			cache: {
-				expiresIn: 60 * 60 * 1000,
+				expiresIn: 60 * 60 * 1000 * 24 * 7,
 				privacy: 'private'
 			}
 		}
