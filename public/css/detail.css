@@ -1,0 +1,14 @@
+.buggy-detail {
+	display: none;
+	flex: 4;
+	overflow: auto;
+	padding: 15px 0;
+}
+
+[data-view=detail] .buggy-detail {
+	display: block;
+}
+
+.buggy-detail > * {
+	margin: 0 15px;
+}

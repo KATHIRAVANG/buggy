@@ -1,0 +1,20 @@
+:root {
+	--primary: #c7d1e3;
+	--secondary: #d7d7de;
+	--third: #748391;
+	--fourth: #adadad;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font: 14px/22px Arial;
+}
+
+body > main {
+	display: flex;
+	height: calc(100% - 60px);
+}

@@ -13,11 +13,22 @@
 	<body>
 		<header><h1>Buggy</h1></header>
 
-		<main data-kontext="each: list">
-			<h2>{title}</h2>
-		</main>
+		<main>
+			<nav class=buggy-navigation>
+				<ul>
+					<li>List</li>
+				</ul>
+			</nav>
 
-		<footer>ⓒ 2016 - Buggy</footer>
+			<section class=buggy-list data-kontext="each: list">
+				<article data-kontext="attribute: {'data-id': id}">{title}</article>
+			</section>
+
+			<article class=buggy-detail>
+				<h2>{title}</h2>
+				<div data-kontext="html: description"></div>
+			</article>
+		</main>
 
 		{{{js}}}
 	</body>

@@ -1,0 +1,5 @@
+.buggy-navigation {
+	flex: 1;
+	border-right: 1px solid #748391;
+	overflow: auto;
+}

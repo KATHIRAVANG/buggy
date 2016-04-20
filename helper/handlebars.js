@@ -7,7 +7,13 @@ const handlebars = require('handlebars'),
 	cache = {},
 	dependencies = {
 		development: {
-			css: [],
+			css: [
+				'./public/css/layout.css',
+				'./public/css/header.css',
+				'./public/css/navigation.css',
+				'./public/css/list.css',
+				'./public/css/detail.css'
+			],
 			js: [
 				'./public/js/vendor/konflux.js',
 				'./public/js/vendor/kontext.js',
