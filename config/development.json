@@ -8,19 +8,15 @@
 		},
 		"connections": [
 			{
-				"port": 8010,
+				"port": 8080,
 				"labels": ["api"]
-			},
-			{
-				"port": 8090,
-				"labels": ["web"]
 			}
 		],
 		"plugins": [
 			{
 				"./api/static": [
 					{
-						"select": ["web"],
+						"select": ["api"],
 						"options": {}
 					}
 				]
@@ -36,7 +32,7 @@
 			{
 				"./api/web": [
 					{
-						"select": ["web"],
+						"select": ["api"],
 						"options": {}
 					}
 				]
