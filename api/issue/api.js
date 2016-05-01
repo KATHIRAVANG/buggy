@@ -1,13 +1,13 @@
 'use strict';
 
-var Config = require('../../lib/config'),
+const Config = require('../../lib/config'),
 	model = require('../../lib/model'),
 	helper = require('../../lib/helper'),
 	status = require('hapi-status'),
 	Modeller = model(Config.get('database/dsn'));
 
 function API() {
-	var api = this,
+	let api = this,
 		model = Modeller.load('issue');
 
 	api.create = function create(request, reply) {

@@ -1,6 +1,6 @@
 'use strict';
 
-var api = require('./api'),
+const api = require('./api'),
 	base = '/api/v1/issue',
 	Joi = require('joi');
 
