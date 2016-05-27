@@ -16,6 +16,9 @@
     "tracking"
   ],
   "author": "Daan van Ham <daan@vanham.io>",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "repository": "git://github.com/daanvanham/buggy",
   "bugs": {
     "url": "https://github.com/daanvanham/buggy/issues",
