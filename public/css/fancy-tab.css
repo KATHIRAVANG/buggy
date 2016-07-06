@@ -1,0 +1,31 @@
+.fancy-tab ul {
+    margin-top: 67px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.fancy-tab li {
+    display: inline-block;
+    list-style: none;
+    padding: 15px 30px 0;
+    vertical-align: top;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.fancy-tab li::after {
+    display: block;
+    content: "";
+    background-color: #5b6ee0;
+    height: 2px;
+    width: 100%;
+    margin-top: 11px;
+    box-shadow: 0 0 10px #5b6ee0;
+    will-change: transform;
+    transform: translateY(20px);
+    transition: transform ease .2s;
+}
+
+.fancy-tab li:hover::after {
+    transform: translateY(0);
+}

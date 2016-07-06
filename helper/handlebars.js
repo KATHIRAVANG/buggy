@@ -9,16 +9,10 @@ const handlebars = require('handlebars'),
 		development: {
 			css: [
 				'./public/css/layout.css',
-				'./public/css/header.css',
-				'./public/css/navigation.css',
-				'./public/css/list.css',
-				'./public/css/detail.css'
+				'./public/css/fancy-tab.css',
+				'./public/css/profile-block.css'
 			],
 			js: [
-				'./public/js/vendor/konflux.js',
-				'./public/js/vendor/kontext.js',
-				'./public/js/api.js',
-				'./public/js/list.js'
 			]
 		},
 		production: {
@@ -29,8 +23,8 @@ const handlebars = require('handlebars'),
 
 function createTag(type, path) {
 	let tag = [
-		'crossorigin=anonymous',
-		'integrity=' + cache[path].integrity,
+		// 'crossorigin=anonymous',
+		// 'integrity=' + cache[path].integrity,
 		(type === 'js' ? 'src' : 'href') + '=' + path.replace(/\.\/public\/(?:cs|j)s/, '/static/' + cache[path].spoiler)
 	];
 
